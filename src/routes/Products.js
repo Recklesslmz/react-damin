@@ -2,10 +2,28 @@
  * Created by limuzi on 2017/8/25.
  */
 import React from 'react'
-import PropTypes from 'prop-types'
-import {Table, Popconfirm, Button} from 'antd'
-const Products = (props) => (
-  <h2>List of Products</h2>
-)
+import {connect} from 'dva'
+import ProductList from '../components/ProductList'
+// import Login from './IndexPage.css'
+import './IndexPage.css'
 
-export default Products
+const Products = ({dispatch, products}) => {
+  function handleDelete(id) {
+    dispatch({
+      type: 'product/delete',
+      payload: id
+    })
+  }
+
+  return (
+    <div>
+      <h2 className='test'>list of Product</h2>
+      <ProductList onDelete={handleDelete} products={products}/>
+    </div>
+  )
+
+}
+
+export default connect(({products}) => ({
+  products,
+}))(Products)

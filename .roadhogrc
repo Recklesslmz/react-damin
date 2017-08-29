@@ -1,5 +1,8 @@
 {
   "entry": "src/index.js",
+  "sass":{
+
+  },
   "env": {
     "development": {
       "extraBabelPlugins": [
